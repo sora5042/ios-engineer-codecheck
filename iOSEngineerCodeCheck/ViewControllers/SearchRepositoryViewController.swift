@@ -31,7 +31,7 @@ class SearchRepositoryViewController: UIViewController {
         
         searchResultTableView.delegate = self
         searchResultTableView.dataSource = self
-        searchResultTableView.register(UITableViewCell.self, forCellReuseIdentifier: cellId)
+        searchResultTableView.register(SearchResultTableViewCell.self, forCellReuseIdentifier: cellId)
         
         searchBar.text = "GitHubのリポジトリを検索できます"
         searchBar.delegate = self
@@ -47,7 +47,7 @@ extension SearchRepositoryViewController: UITableViewDelegate, UITableViewDataSo
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         
-        let cell = searchResultTableView.dequeueReusableCell(withIdentifier: cellId, for: indexPath)
+        let cell = searchResultTableView.dequeueReusableCell(withIdentifier: cellId, for: indexPath) as! SearchResultTableViewCell
         let repository = repository[indexPath.row]
         cell.textLabel?.text = repository["full_name"] as? String ?? ""
         cell.detailTextLabel?.text = repository["language"] as? String ?? ""

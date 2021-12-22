@@ -10,6 +10,8 @@ import UIKit
 
 class DetailRepositoryViewController: UIViewController {
     
+    var repository: [[String: Any]]=[]
+    
     var searchRepositoryViewController: SearchRepositoryViewController!
     
     @IBOutlet weak var imageView: UIImageView!

@@ -11,7 +11,7 @@
         <!--Detail Repository View Controller-->
         <scene sceneID="8Uv-vZ-B55">
             <objects>
-                <viewController id="DrL-Wz-RCh" customClass="DetailRepositoryViewController" customModule="iOSEngineerCodeCheck" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="DetailRepositoryViewController" useStoryboardIdentifierAsRestorationIdentifier="YES" id="DrL-Wz-RCh" customClass="DetailRepositoryViewController" customModule="iOSEngineerCodeCheck" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="1pM-9h-0ko">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>

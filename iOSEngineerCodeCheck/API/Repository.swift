@@ -11,7 +11,6 @@ import Foundation
 struct Repository: Decodable {
     
     let items: [Item]
-    
 }
 
 struct Item: Decodable {

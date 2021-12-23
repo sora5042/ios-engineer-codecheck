@@ -15,8 +15,8 @@ class SearchRepositoryViewController: UIViewController {
     private var repositoryItems = [Item]()
     private var repositoryItem: Item?
     
-    @IBOutlet weak var searchBar: UISearchBar!
-    @IBOutlet weak var searchResultTableView: UITableView!
+    @IBOutlet weak private var searchBar: UISearchBar!
+    @IBOutlet weak private var searchResultTableView: UITableView!
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -72,6 +72,7 @@ extension SearchRepositoryViewController: UITableViewDelegate, UITableViewDataSo
         let detailRepositoryViewController = detailRepositoryStoryboard.instantiateViewController(withIdentifier: "DetailRepositoryViewController") as! DetailRepositoryViewController
         repositoryItem = repositoryItems[indexPath.row]
         detailRepositoryViewController.repositoryItem = self.repositoryItem
+        detailRepositoryViewController.modalPresentationStyle = .fullScreen
         self.present(detailRepositoryViewController, animated: true, completion: nil)
     }
 }

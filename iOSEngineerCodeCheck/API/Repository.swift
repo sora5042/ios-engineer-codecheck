@@ -22,6 +22,7 @@ struct Item: Decodable {
     let stargazers_count: Int
     let watchers_count: Int
     let language: String?
+    let description: String?
     let forks_count: Int
     let open_issues_count: Int
     let owner: Owner

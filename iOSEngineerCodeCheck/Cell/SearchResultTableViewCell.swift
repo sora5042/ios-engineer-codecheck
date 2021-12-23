@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import Nuke
 
 class SearchResultTableViewCell: UITableViewCell {
     
@@ -20,15 +21,33 @@ class SearchResultTableViewCell: UITableViewCell {
             if let language = repositoryItem?.language {
                 languageLabel.text = language
             }
+            
+            if let description = repositoryItem?.description {
+                descriptionLabel.text = description
+                
+            }
+            
+            if let url = URL(string: repositoryItem?.owner.avatar_url ?? "") {
+                Nuke.loadImage(with: url, into: repositoryImageView )
+            }
+            
         }
     }
     
     @IBOutlet weak var repositoryTitleLabel: UILabel!
     @IBOutlet weak var languageLabel: UILabel!
+    @IBOutlet weak var repositoryImageView: UIImageView!
+    @IBOutlet weak var descriptionLabel: UILabel!
     
     override func awakeFromNib() {
         super.awakeFromNib()
-        // Initialization code
+        
+        setupViews()
+    }
+    
+    private func setupViews() {
+        
+        repositoryImageView.layer.cornerRadius = 35
     }
 
     override func setSelected(_ selected: Bool, animated: Bool) {
@@ -36,5 +55,4 @@ class SearchResultTableViewCell: UITableViewCell {
 
         // Configure the view for the selected state
     }
-    
 }

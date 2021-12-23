@@ -11,8 +11,8 @@ import Nuke
 
 class DetailRepositoryViewController: UIViewController {
     
-     var repositoryItems = [Item]()
-     var repositoryItem: Item?
+    var repositoryItems = [Item]()
+    var repositoryItem: Item?
     
     @IBOutlet weak var imageView: UIImageView!
     @IBOutlet weak var titleLabel: UILabel!
@@ -26,8 +26,6 @@ class DetailRepositoryViewController: UIViewController {
         super.viewDidLoad()
         
         setupViews()
-        
-        
     }
     
     private func setupViews() {
@@ -42,9 +40,6 @@ class DetailRepositoryViewController: UIViewController {
         if let url = URL(string: repositoryItem?.owner.avatar_url ?? "") {
             Nuke.loadImage(with: url, into: imageView)
         }
-        
-        
     }
-    
 }
 

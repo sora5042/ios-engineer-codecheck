@@ -30,7 +30,7 @@ class SearchRepositoryViewController: UIViewController {
         searchResultTableView.dataSource = self
         searchResultTableView.register(UINib(nibName: "SearchResultTableViewCell", bundle: nil), forCellReuseIdentifier: cellId)
         
-        searchBar.text = "GitHubのリポジトリを検索できます"
+        searchBar.text = "リポジトリの検索"
         searchBar.delegate = self
     }
     
@@ -49,7 +49,8 @@ class SearchRepositoryViewController: UIViewController {
 extension SearchRepositoryViewController: UITableViewDelegate, UITableViewDataSource {
     
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
-        return 60
+        return 100
+        
     }
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
@@ -79,7 +80,7 @@ extension SearchRepositoryViewController: UITableViewDelegate, UITableViewDataSo
 extension SearchRepositoryViewController: UISearchBarDelegate {
     
     func searchBarShouldBeginEditing(_ searchBar: UISearchBar) -> Bool {
-        // seachBarのtextを空にする
+//         seachBarのtextを空にする
         searchBar.text = ""
         return true
     }

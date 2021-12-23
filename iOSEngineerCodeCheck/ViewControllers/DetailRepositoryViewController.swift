@@ -25,34 +25,35 @@ class DetailRepositoryViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        let repository = searchRepositoryViewController.repository[searchRepositoryViewController.index]
+//        let repository = searchRepositoryViewController.repository[searchRepositoryViewController.index]
         
-        languageLabel.text = "Written in \(repository["language"] as? String ?? "")"
-        starsLabel.text = "\(repository["stargazers_count"] as? Int ?? 0) stars"
-        watchesLabel.text = "\(repository["wachers_count"] as? Int ?? 0) watchers"
-        forksLabel.text = "\(repository["forks_count"] as? Int ?? 0) forks"
-        issuesLabel.text = "\(repository["open_issues_count"] as? Int ?? 0) open issues"
+//        languageLabel.text = "Written in \(repository["language"] as? String ?? "")"
+//        starsLabel.text = "\(repository["stargazers_count"] as? Int ?? 0) stars"
+//        watchesLabel.text = "\(repository["wachers_count"] as? Int ?? 0) watchers"
+//        forksLabel.text = "\(repository["forks_count"] as? Int ?? 0) forks"
+//        issuesLabel.text = "\(repository["open_issues_count"] as? Int ?? 0) open issues"
         getImage()
         
     }
     
     func getImage(){
         
-        let repository = searchRepositoryViewController.repository[searchRepositoryViewController.index]
+//        let repository = searchRepositoryViewController.repository[searchRepositoryViewController.index]
         
-        titleLabel.text = repository["full_name"] as? String
-        
-        if let owner = repository["owner"] as? [String: Any] {
-            if let imageUrl = owner["avatar_url"] as? String {
-                URLSession.shared.dataTask(with: URL(string: imageUrl)!) { (data, res, err) in
-                    let image = UIImage(data: data!)!
-                    DispatchQueue.main.async {
-                        self.imageView.image = image
-                    }
-                }.resume()
-            }
-        }
-        
-    }
+//        titleLabel.text = repository["full_name"] as? String
+//
+//        if let owner = repository["owner"] as? [String: Any] {
+//            if let imageUrl = owner["avatar_url"] as? String {
+//                URLSession.shared.dataTask(with: URL(string: imageUrl)!) { (data, res, err) in
+//                    let image = UIImage(data: data!)!
+//                    DispatchQueue.main.async {
+//                        self.imageView.image = image
+//                    }
+//                }.resume()
+//            }
+//        }
+//
+//    }
     
 }
+    }

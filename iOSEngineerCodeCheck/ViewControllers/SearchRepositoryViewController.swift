@@ -67,7 +67,7 @@ extension SearchRepositoryViewController: UITableViewDelegate, UITableViewDataSo
     }
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        //  画面遷移時に呼ばれる
+        
         let detailRepositoryStoryboard = UIStoryboard(name: "DetailRepository", bundle: nil)
         let detailRepositoryViewController = detailRepositoryStoryboard.instantiateViewController(withIdentifier: "DetailRepositoryViewController") as! DetailRepositoryViewController
         repositoryItem = repositoryItems[indexPath.row]
@@ -98,6 +98,5 @@ extension SearchRepositoryViewController: UISearchBarDelegate {
         guard let word = searchBar.text else { return }
         
         fetchSearchRepositoryInfo(word: word)
-        
     }
 }

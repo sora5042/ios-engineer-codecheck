@@ -52,18 +52,6 @@
                                             <constraint firstAttribute="width" secondItem="iCs-uw-uaQ" secondAttribute="height" multiplier="1:1" id="l9n-dP-8F0"/>
                                         </constraints>
                                     </imageView>
-                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="swift" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="6GC-Q6-C3U">
-                                        <rect key="frame" x="66" y="33" width="32.666666666666657" height="18"/>
-                                        <fontDescription key="fontDescription" type="system" pointSize="15"/>
-                                        <nil key="textColor"/>
-                                        <nil key="highlightedColor"/>
-                                    </label>
-                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Language" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="pw2-j6-IJn">
-                                        <rect key="frame" x="307.33333333333331" y="50" width="57.666666666666686" height="12"/>
-                                        <fontDescription key="fontDescription" name="HiraMaruProN-W4" family="Hiragino Maru Gothic ProN" pointSize="12"/>
-                                        <color key="textColor" systemColor="darkTextColor"/>
-                                        <nil key="highlightedColor"/>
-                                    </label>
                                     <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" text="description" textAlignment="natural" translatesAutoresizingMaskIntoConstraints="NO" id="Lf9-01-J4q">
                                         <rect key="frame" x="8" y="87" width="359" height="97"/>
                                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
@@ -72,28 +60,30 @@
                                         <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
                                     </textView>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Title" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="S4a-NR-oJH">
-                                        <rect key="frame" x="66" y="8" width="36.333333333333343" height="17"/>
+                                        <rect key="frame" x="73" y="20" width="36.333333333333343" height="17"/>
                                         <fontDescription key="fontDescription" name="HiraMaruProN-W4" family="Hiragino Maru Gothic ProN" pointSize="17"/>
                                         <color key="textColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Language" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="pw2-j6-IJn">
+                                        <rect key="frame" x="73" y="57" width="57.666666666666657" height="12"/>
+                                        <fontDescription key="fontDescription" name="HiraMaruProN-W4" family="Hiragino Maru Gothic ProN" pointSize="12"/>
+                                        <color key="textColor" systemColor="darkTextColor"/>
                                         <nil key="highlightedColor"/>
                                     </label>
                                 </subviews>
                                 <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                                 <constraints>
-                                    <constraint firstItem="S4a-NR-oJH" firstAttribute="top" secondItem="wJf-hv-t0s" secondAttribute="top" constant="8" id="BMK-0O-vuv"/>
-                                    <constraint firstAttribute="trailing" secondItem="pw2-j6-IJn" secondAttribute="trailing" constant="10" id="FBn-ud-TmG"/>
+                                    <constraint firstItem="pw2-j6-IJn" firstAttribute="top" secondItem="S4a-NR-oJH" secondAttribute="bottom" constant="20" id="5Kt-7W-T3p"/>
+                                    <constraint firstItem="S4a-NR-oJH" firstAttribute="top" secondItem="wJf-hv-t0s" secondAttribute="top" constant="20" id="BMK-0O-vuv"/>
                                     <constraint firstItem="iCs-uw-uaQ" firstAttribute="leading" secondItem="wJf-hv-t0s" secondAttribute="leading" constant="8" id="OHC-GU-GKx"/>
                                     <constraint firstItem="Lf9-01-J4q" firstAttribute="top" secondItem="iCs-uw-uaQ" secondAttribute="bottom" constant="29" id="P5k-13-Lbz"/>
                                     <constraint firstItem="iCs-uw-uaQ" firstAttribute="top" secondItem="wJf-hv-t0s" secondAttribute="top" constant="8" id="SSl-QT-WKR"/>
-                                    <constraint firstItem="Lf9-01-J4q" firstAttribute="top" secondItem="6GC-Q6-C3U" secondAttribute="bottom" constant="36" id="TFj-3p-plr"/>
+                                    <constraint firstItem="pw2-j6-IJn" firstAttribute="leading" secondItem="wJf-hv-t0s" secondAttribute="leading" constant="73" id="a0m-aS-95T"/>
                                     <constraint firstAttribute="bottom" secondItem="Lf9-01-J4q" secondAttribute="bottom" constant="8" id="adt-u5-JYh"/>
                                     <constraint firstItem="Lf9-01-J4q" firstAttribute="leading" secondItem="wJf-hv-t0s" secondAttribute="leading" constant="8" id="ebB-bc-QC5"/>
-                                    <constraint firstItem="Lf9-01-J4q" firstAttribute="top" secondItem="pw2-j6-IJn" secondAttribute="bottom" constant="25" id="hK3-f3-dwl"/>
-                                    <constraint firstItem="6GC-Q6-C3U" firstAttribute="leading" secondItem="iCs-uw-uaQ" secondAttribute="trailing" constant="8" symbolic="YES" id="pJ1-R2-NUg"/>
                                     <constraint firstAttribute="trailing" secondItem="Lf9-01-J4q" secondAttribute="trailing" constant="8" id="r7x-Iz-N7j"/>
-                                    <constraint firstItem="6GC-Q6-C3U" firstAttribute="top" secondItem="S4a-NR-oJH" secondAttribute="bottom" constant="8" symbolic="YES" id="vtp-Hx-pQU"/>
-                                    <constraint firstItem="pw2-j6-IJn" firstAttribute="top" secondItem="wJf-hv-t0s" secondAttribute="top" constant="50" id="vzS-Lb-Bn0"/>
-                                    <constraint firstItem="S4a-NR-oJH" firstAttribute="leading" secondItem="iCs-uw-uaQ" secondAttribute="trailing" constant="8" id="wl8-5N-Pn0"/>
+                                    <constraint firstItem="S4a-NR-oJH" firstAttribute="leading" secondItem="iCs-uw-uaQ" secondAttribute="trailing" constant="15" id="wl8-5N-Pn0"/>
                                 </constraints>
                             </view>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="3c4-k1-Pnw">
@@ -163,7 +153,6 @@
                         <outlet property="imageView" destination="iCs-uw-uaQ" id="vx8-eh-ZEG"/>
                         <outlet property="issuesLabel" destination="ed2-XH-7lM" id="7h4-uu-pLj"/>
                         <outlet property="languageLabel" destination="pw2-j6-IJn" id="GzV-Xe-ngc"/>
-                        <outlet property="nameLabel" destination="6GC-Q6-C3U" id="J2Q-JD-eJf"/>
                         <outlet property="starsLabel" destination="SOh-86-ghQ" id="g71-rg-9Kv"/>
                         <outlet property="titleLabel" destination="S4a-NR-oJH" id="n10-AU-Tg4"/>
                         <outlet property="titleView" destination="wJf-hv-t0s" id="Qw3-yg-gYi"/>

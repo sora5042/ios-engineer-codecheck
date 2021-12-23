@@ -15,14 +15,11 @@ class SearchResultTableViewCell: UITableViewCell {
             
             if let repositoryTitle = repositoryItem?.full_name {
                 repositoryTitleLabel.text = repositoryTitle
-                
             }
             
             if let language = repositoryItem?.language {
                 languageLabel.text = language
-                
             }
-            
         }
     }
     

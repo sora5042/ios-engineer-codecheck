@@ -39,9 +39,7 @@ class SearchRepositoryViewController: UIViewController {
         let path = "/search/repositories"
         
         API.shared.request(word: word, path: path, type: Repository.self) { (repository) in
-            print("repository",repository )
             self.repositoryItems = repository.items
-            print("repositoryItems", self.repositoryItems)
             self.searchResultTableView.reloadData()
         }
     }
@@ -71,8 +69,8 @@ extension SearchRepositoryViewController: UITableViewDelegate, UITableViewDataSo
         //  画面遷移時に呼ばれる
         let detailRepositoryStoryboard = UIStoryboard(name: "DetailRepository", bundle: nil)
         let detailRepositoryViewController = detailRepositoryStoryboard.instantiateViewController(withIdentifier: "DetailRepositoryViewController") as! DetailRepositoryViewController
-//        let item = repositoryItems[indexPath.row]
-//        detailRepositoryViewController.repositoryItems = item
+        repositoryItem = repositoryItems[indexPath.row]
+        detailRepositoryViewController.repositoryItem = self.repositoryItem
         self.present(detailRepositoryViewController, animated: true, completion: nil)
     }
 }

@@ -34,6 +34,7 @@ class SearchRepositoryViewController: UIViewController {
         searchBar.delegate = self
     }
     
+    // API処理メソッド
     private func fetchSearchRepositoryInfo(word: String) {
         
         let path = "/search/repositories"

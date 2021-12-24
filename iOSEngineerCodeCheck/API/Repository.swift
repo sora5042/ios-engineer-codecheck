@@ -25,12 +25,20 @@ struct Item: Decodable {
     let forks_count: Int
     let open_issues_count: Int
     let owner: Owner
+    let license: License?
     
 }
 
 struct Owner: Decodable {
     
+    let login: String
     let avatar_url: String
     let url: String
     let html_url: String
+}
+
+struct License: Decodable {
+    
+    let name: String
+    
 }

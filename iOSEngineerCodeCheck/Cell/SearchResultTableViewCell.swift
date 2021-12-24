@@ -14,6 +14,10 @@ class SearchResultTableViewCell: UITableViewCell {
     var repositoryItem: Item? {
         didSet {
             
+            if let loginName = repositoryItem?.owner.login {
+                loginNameLabel.text = loginName
+            }
+            
             if let repositoryTitle = repositoryItem?.full_name {
                 repositoryTitleLabel.text = repositoryTitle
             }
@@ -23,7 +27,7 @@ class SearchResultTableViewCell: UITableViewCell {
             }
             
             if let description = repositoryItem?.description {
-                descriptionLabel.text = description
+                descriptionTextView.text = description
                 
             }
             
@@ -37,7 +41,9 @@ class SearchResultTableViewCell: UITableViewCell {
     @IBOutlet weak var repositoryTitleLabel: UILabel!
     @IBOutlet weak var languageLabel: UILabel!
     @IBOutlet weak var repositoryImageView: UIImageView!
-    @IBOutlet weak var descriptionLabel: UILabel!
+    @IBOutlet weak var descriptionTextView: UITextView!
+    @IBOutlet weak var loginNameLabel: UILabel!
+    
     
     override func awakeFromNib() {
         super.awakeFromNib()
@@ -47,7 +53,7 @@ class SearchResultTableViewCell: UITableViewCell {
     
     private func setupViews() {
         
-        repositoryImageView.layer.cornerRadius = 35
+        repositoryImageView.layer.cornerRadius = 22.5
     }
 
     override func setSelected(_ selected: Bool, animated: Bool) {

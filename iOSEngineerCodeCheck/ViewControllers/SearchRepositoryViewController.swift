@@ -15,8 +15,8 @@ class SearchRepositoryViewController: UIViewController {
     private var repositoryItems = [Item]()
     private var repositoryItem: Item?
     
-    @IBOutlet weak private var searchBar: UISearchBar!
-    @IBOutlet weak private var searchResultTableView: UITableView!
+    @IBOutlet private weak var searchBar: UISearchBar!
+    @IBOutlet private weak var searchResultTableView: UITableView!
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -49,7 +49,7 @@ class SearchRepositoryViewController: UIViewController {
 extension SearchRepositoryViewController: UITableViewDelegate, UITableViewDataSource {
     
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
-        return 100
+        return 130
         
     }
     

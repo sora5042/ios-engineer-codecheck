@@ -20,10 +20,12 @@ class DetailRepositoryViewController: UIViewController {
     @IBOutlet private weak var watchesLabel: UILabel!
     @IBOutlet private weak var forksLabel: UILabel!
     @IBOutlet private weak var issuesLabel: UILabel!
+    @IBOutlet private weak var licenseLabel: UILabel!
     @IBOutlet private weak var descriptionTextView: UITextView!
     @IBOutlet private weak var backButton: UIButton!
-    @IBOutlet weak var titleView: UIView!
-    @IBOutlet weak var countView: UIView!
+    @IBOutlet private weak var titleView: UIView!
+    @IBOutlet private weak var countView: UIView!
+    @IBOutlet private weak var licenseView: UIView!
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -39,6 +41,8 @@ class DetailRepositoryViewController: UIViewController {
         countView.layer.borderWidth = 1
         countView.layer.borderColor = UIColor.lightGray.cgColor
         imageView.layer.cornerRadius = 25
+        licenseView.layer.borderWidth = 1
+        licenseView.layer.borderColor = UIColor.lightGray.cgColor
         
         backButton.addTarget(self, action: #selector(tappedBackButton), for: .touchUpInside)
     }
@@ -48,10 +52,12 @@ class DetailRepositoryViewController: UIViewController {
         descriptionTextView.text = repositoryItem?.description
         titleLabel.text = repositoryItem?.full_name
         languageLabel.text = "written in \(repositoryItem?.language ?? "")"
-        starsLabel.text = "\(String(repositoryItem?.stargazers_count ?? 0)) stars"
-        watchesLabel.text = "\(String(repositoryItem?.watchers_count ?? 0)) watchers"
-        forksLabel.text = "\(String(repositoryItem?.forks_count ?? 0)) forks"
-        issuesLabel.text = "\(String(repositoryItem?.open_issues_count ?? 0)) open issues"
+        starsLabel.text = String(repositoryItem?.stargazers_count ?? 0)
+        watchesLabel.text = String(repositoryItem?.watchers_count ?? 0)
+        forksLabel.text = String(repositoryItem?.forks_count ?? 0)
+        issuesLabel.text = String(repositoryItem?.open_issues_count ?? 0)
+        
+        licenseLabel.text = repositoryItem?.license?.name
         
         if let url = URL(string: repositoryItem?.owner.avatar_url ?? "") {
             Nuke.loadImage(with: url, into: imageView)

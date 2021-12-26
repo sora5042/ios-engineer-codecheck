@@ -9,8 +9,25 @@
 import UIKit
 
 class SearchResultTableViewCell: UITableViewCell {
-
+    
+    var repositoryItem: Item? {
+        didSet {
+            
+            if let repositoryTitle = repositoryItem?.full_name {
+                repositoryTitleLabel.text = repositoryTitle
+                
+            }
+            
+            if let language = repositoryItem?.language {
+                languageLabel.text = language
+                
+            }
+            
+        }
+    }
+    
     @IBOutlet weak var repositoryTitleLabel: UILabel!
+    @IBOutlet weak var languageLabel: UILabel!
     
     override func awakeFromNib() {
         super.awakeFromNib()

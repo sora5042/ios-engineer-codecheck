@@ -23,6 +23,7 @@ class DetailRepositoryViewController: UIViewController {
     @IBOutlet private weak var licenseLabel: UILabel!
     @IBOutlet private weak var descriptionTextView: UITextView!
     @IBOutlet private weak var backButton: UIButton!
+    @IBOutlet private weak var safariButton: UIButton!
     @IBOutlet private weak var titleView: UIView!
     @IBOutlet private weak var countView: UIView!
     @IBOutlet private weak var licenseView: UIView!
@@ -43,8 +44,10 @@ class DetailRepositoryViewController: UIViewController {
         imageView.layer.cornerRadius = 25
         licenseView.layer.borderWidth = 1
         licenseView.layer.borderColor = UIColor.lightGray.cgColor
+        safariButton.layer.cornerRadius = 12
         
         backButton.addTarget(self, action: #selector(tappedBackButton), for: .touchUpInside)
+        safariButton.addTarget(self, action: #selector(tappedSafariButton), for: .touchUpInside)
     }
     
     private func setupRepositoryItem() {
@@ -62,6 +65,14 @@ class DetailRepositoryViewController: UIViewController {
         if let url = URL(string: repositoryItem?.owner.avatar_url ?? "") {
             Nuke.loadImage(with: url, into: imageView)
         }
+    }
+    
+    @objc private func tappedSafariButton() {
+        
+        guard let repositoryUrl = URL(string: repositoryItem?.owner.html_url ?? "") else { return }
+        UIApplication.shared.open(repositoryUrl)
+        
+        
     }
     
     @objc private func tappedBackButton() {

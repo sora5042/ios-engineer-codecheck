@@ -27,7 +27,7 @@ class API {
         request.responseJSON { (response) in
             
             do {
-                print("response", response)
+//                print("response", response)
                 if let data = response.data {
                     let value = try decode.decode(T.self, from: data)
                     

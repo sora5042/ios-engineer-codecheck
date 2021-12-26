@@ -15,7 +15,7 @@ struct Repository: Decodable {
 
 struct Item: Decodable {
     
-    let id: Int
+    let id: Int?
     let name: String
     let full_name: String
     let stargazers_count: Int

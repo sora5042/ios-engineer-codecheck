@@ -7,12 +7,12 @@
 //
 
 import UIKit
+import Nuke
 
 class DetailRepositoryViewController: UIViewController {
     
-    var repository: [[String: Any]]=[]
-    
-    var searchRepositoryViewController: SearchRepositoryViewController!
+     var repositoryItems = [Item]()
+     var repositoryItem: Item?
     
     @IBOutlet weak var imageView: UIImageView!
     @IBOutlet weak var titleLabel: UILabel!
@@ -25,35 +25,26 @@ class DetailRepositoryViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-//        let repository = searchRepositoryViewController.repository[searchRepositoryViewController.index]
+        setupViews()
         
-//        languageLabel.text = "Written in \(repository["language"] as? String ?? "")"
-//        starsLabel.text = "\(repository["stargazers_count"] as? Int ?? 0) stars"
-//        watchesLabel.text = "\(repository["wachers_count"] as? Int ?? 0) watchers"
-//        forksLabel.text = "\(repository["forks_count"] as? Int ?? 0) forks"
-//        issuesLabel.text = "\(repository["open_issues_count"] as? Int ?? 0) open issues"
-        getImage()
         
     }
     
-    func getImage(){
+    private func setupViews() {
         
-//        let repository = searchRepositoryViewController.repository[searchRepositoryViewController.index]
+        titleLabel?.text = repositoryItem?.full_name
+        languageLabel?.text = "Written in \(repositoryItem?.language)"
+        starsLabel?.text = "\(String(repositoryItem?.stargazers_count ?? 0)) stars"
+        watchesLabel?.text = "\(String(repositoryItem?.watchers_count ?? 0)) watchers"
+        forksLabel?.text = "\(String(repositoryItem?.forks_count ?? 0)) forks"
+        issuesLabel?.text = "\(String(repositoryItem?.open_issues_count ?? 0)) open issues"
         
-//        titleLabel.text = repository["full_name"] as? String
-//
-//        if let owner = repository["owner"] as? [String: Any] {
-//            if let imageUrl = owner["avatar_url"] as? String {
-//                URLSession.shared.dataTask(with: URL(string: imageUrl)!) { (data, res, err) in
-//                    let image = UIImage(data: data!)!
-//                    DispatchQueue.main.async {
-//                        self.imageView.image = image
-//                    }
-//                }.resume()
-//            }
-//        }
-//
-//    }
+        if let url = URL(string: repositoryItem?.owner.avatar_url ?? "") {
+            Nuke.loadImage(with: url, into: imageView)
+        }
+        
+        
+    }
     
 }
-    }
+

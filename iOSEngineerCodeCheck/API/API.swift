@@ -22,16 +22,17 @@ class API {
         
         let request = AF.request(url, method: .get, parameters: params)
         let decode = JSONDecoder()
-//        decode.keyDecodingStrategy = .convertFromSnakeCase
+        //        decode.keyDecodingStrategy = .convertFromSnakeCase
         
         request.responseJSON { (response) in
             
             do {
-                guard let data = response.data else { return }
-                let value = try decode.decode(T.self, from: data)
-                
-                completion(value)
-                
+                print("response", response)
+                if let data = response.data {
+                    let value = try decode.decode(T.self, from: data)
+                    
+                    completion(value)
+                }
             } catch {
                 print("変換に失敗: ", error)
             }

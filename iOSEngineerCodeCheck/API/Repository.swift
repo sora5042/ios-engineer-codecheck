@@ -11,7 +11,6 @@ import Foundation
 struct Repository: Decodable {
     
     let items: [Item]
-    
 }
 
 struct Item: Decodable {
@@ -22,15 +21,24 @@ struct Item: Decodable {
     let stargazers_count: Int
     let watchers_count: Int
     let language: String?
+    let description: String?
     let forks_count: Int
     let open_issues_count: Int
     let owner: Owner
+    let license: License?
     
 }
 
 struct Owner: Decodable {
     
+    let login: String
     let avatar_url: String
     let url: String
     let html_url: String
+}
+
+struct License: Decodable {
+    
+    let name: String
+    
 }

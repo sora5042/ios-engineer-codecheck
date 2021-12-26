@@ -12,11 +12,8 @@ class SearchRepositoryViewController: UIViewController {
     
     private let cellId = "cellId"
     
-    var repository: [[String: Any]]=[]
-    var task: URLSessionTask?
-    var word: String!
-    var url: String!
-    var index: Int!
+    private var repositoryItems = [Item]()
+    private var repositoryItem: Item?
     
     @IBOutlet weak var searchBar: UISearchBar!
     @IBOutlet weak var searchResultTableView: UITableView!
@@ -31,38 +28,52 @@ class SearchRepositoryViewController: UIViewController {
         
         searchResultTableView.delegate = self
         searchResultTableView.dataSource = self
-        searchResultTableView.register(UITableViewCell.self, forCellReuseIdentifier: cellId)
+        searchResultTableView.register(UINib(nibName: "SearchResultTableViewCell", bundle: nil), forCellReuseIdentifier: cellId)
         
         searchBar.text = "GitHubのリポジトリを検索できます"
         searchBar.delegate = self
+    }
+    
+    private func fetchSearchRepositoryInfo(word: String) {
+        
+        let path = "/search/repositories"
+        
+        API.shared.request(word: word, path: path, type: Repository.self) { (repository) in
+            print("repository",repository )
+            self.repositoryItems = repository.items
+            print("repositoryItems", self.repositoryItems)
+            self.searchResultTableView.reloadData()
+        }
     }
 }
 
 // MARK: - SearchRepositoryViewController: UITableViewDelegate, UITableViewDataSource
 extension SearchRepositoryViewController: UITableViewDelegate, UITableViewDataSource {
     
+    func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
+        return 60
+    }
+    
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return repository.count
+        return repositoryItems.count
+        
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         
-        let cell = searchResultTableView.dequeueReusableCell(withIdentifier: cellId, for: indexPath)
-        let repository = repository[indexPath.row]
-        cell.textLabel?.text = repository["full_name"] as? String ?? ""
-        cell.detailTextLabel?.text = repository["language"] as? String ?? ""
-        cell.tag = indexPath.row
+        let cell = searchResultTableView.dequeueReusableCell(withIdentifier: cellId, for: indexPath) as! SearchResultTableViewCell
+        cell.repositoryItem = repositoryItems[indexPath.row]
+        
         return cell
     }
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         //  画面遷移時に呼ばれる
-        index = indexPath.row
         let detailRepositoryStoryboard = UIStoryboard(name: "DetailRepository", bundle: nil)
         let detailRepositoryViewController = detailRepositoryStoryboard.instantiateViewController(withIdentifier: "DetailRepositoryViewController") as! DetailRepositoryViewController
-        detailRepositoryViewController.repository = self.repository
+//        let item = repositoryItems[indexPath.row]
+//        detailRepositoryViewController.repositoryItems = item
         self.present(detailRepositoryViewController, animated: true, completion: nil)
-        
     }
 }
 
@@ -75,30 +86,18 @@ extension SearchRepositoryViewController: UISearchBarDelegate {
         return true
     }
     
-    func searchBar(_ searchBar: UISearchBar, textDidChange searchText: String) {
-        task?.cancel()
+    func searchBarCancelButtonClicked(_ searchBar: UISearchBar) {
+        searchBar.showsCancelButton = false
+        searchBar.resignFirstResponder()
     }
     
     func searchBarSearchButtonClicked(_ searchBar: UISearchBar) {
         
-        word = searchBar.text!
+        searchBar.resignFirstResponder()
+        searchBar.showsCancelButton = false
+        guard let word = searchBar.text else { return }
         
-        if word.count != 0 {
-            url = "https://api.github.com/search/repositories?q=\(word!)"
-            task = URLSession.shared.dataTask(with: URL(string: url)!) { (data, res, err) in
-                if let object = try! JSONSerialization.jsonObject(with: data!) as? [String: Any] {
-                    if let items = object["items"] as? [[String: Any]] {
-                        self.repository = items
-                        DispatchQueue.main.async {
-                            self.searchResultTableView.reloadData()
-                        }
-                    }
-                }
-            }
-            // これ呼ばなきゃリストが更新されません
-            task?.resume()
-        }
+        fetchSearchRepositoryInfo(word: word)
         
     }
-    
 }

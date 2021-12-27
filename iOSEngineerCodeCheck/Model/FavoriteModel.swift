@@ -7,3 +7,16 @@
 //
 
 import Foundation
+import RealmSwift
+
+class FavoriteModel: Object {
+    
+    @objc dynamic var id = ""
+    @objc dynamic var isFavorite = false
+    
+    override class func primaryKey() -> String? {
+        return "id"
+    }
+}
+
+

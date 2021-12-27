@@ -7,53 +7,78 @@
 //
 
 import UIKit
+import Nuke
 
 class DetailRepositoryViewController: UIViewController {
     
-    var repository: [[String: Any]]=[]
+    var repositoryItem: Item?
+       
+    @IBOutlet private weak var titleLabel: UILabel!
+    @IBOutlet private weak var languageLabel: UILabel!
+    @IBOutlet private weak var starsLabel: UILabel!
+    @IBOutlet private weak var watchesLabel: UILabel!
+    @IBOutlet private weak var forksLabel: UILabel!
+    @IBOutlet private weak var issuesLabel: UILabel!
+    @IBOutlet private weak var licenseLabel: UILabel!
     
-    var searchRepositoryViewController: SearchRepositoryViewController!
+    @IBOutlet private weak var descriptionTextView: UITextView!
+    @IBOutlet private weak var imageView: UIImageView!
     
-    @IBOutlet weak var imageView: UIImageView!
-    @IBOutlet weak var titleLabel: UILabel!
-    @IBOutlet weak var languageLabel: UILabel!
-    @IBOutlet weak var starsLabel: UILabel!
-    @IBOutlet weak var watchesLabel: UILabel!
-    @IBOutlet weak var forksLabel: UILabel!
-    @IBOutlet weak var issuesLabel: UILabel!
+    @IBOutlet private weak var backButton: UIButton!
+    @IBOutlet private weak var safariButton: UIButton!
+    
+    @IBOutlet private weak var titleView: UIView!
+    @IBOutlet private weak var countView: UIView!
+    @IBOutlet private weak var licenseView: UIView!
     
     override func viewDidLoad() {
         super.viewDidLoad()
         
-//        let repository = searchRepositoryViewController.repository[searchRepositoryViewController.index]
-        
-//        languageLabel.text = "Written in \(repository["language"] as? String ?? "")"
-//        starsLabel.text = "\(repository["stargazers_count"] as? Int ?? 0) stars"
-//        watchesLabel.text = "\(repository["wachers_count"] as? Int ?? 0) watchers"
-//        forksLabel.text = "\(repository["forks_count"] as? Int ?? 0) forks"
-//        issuesLabel.text = "\(repository["open_issues_count"] as? Int ?? 0) open issues"
-        getImage()
-        
+        setupViews()
+        setupRepositoryItem()
     }
     
-    func getImage(){
+    private func setupViews() {
         
-//        let repository = searchRepositoryViewController.repository[searchRepositoryViewController.index]
+        titleView.layer.borderWidth = 1
+        titleView.layer.borderColor = UIColor.lightGray.cgColor
+        countView.layer.borderWidth = 1
+        countView.layer.borderColor = UIColor.lightGray.cgColor
+        imageView.layer.cornerRadius = 25
+        licenseView.layer.borderWidth = 1
+        licenseView.layer.borderColor = UIColor.lightGray.cgColor
+        safariButton.layer.cornerRadius = 12
         
-//        titleLabel.text = repository["full_name"] as? String
-//
-//        if let owner = repository["owner"] as? [String: Any] {
-//            if let imageUrl = owner["avatar_url"] as? String {
-//                URLSession.shared.dataTask(with: URL(string: imageUrl)!) { (data, res, err) in
-//                    let image = UIImage(data: data!)!
-//                    DispatchQueue.main.async {
-//                        self.imageView.image = image
-//                    }
-//                }.resume()
-//            }
-//        }
-//
-//    }
+        backButton.addTarget(self, action: #selector(tappedBackButton), for: .touchUpInside)
+        safariButton.addTarget(self, action: #selector(tappedSafariButton), for: .touchUpInside)
+    }
     
+    private func setupRepositoryItem() {
+        
+        descriptionTextView.text = repositoryItem?.description
+        titleLabel.text = repositoryItem?.full_name
+        languageLabel.text = "written in \(repositoryItem?.language ?? "")"
+        starsLabel.text = String(repositoryItem?.stargazers_count ?? 0)
+        watchesLabel.text = String(repositoryItem?.watchers_count ?? 0)
+        forksLabel.text = String(repositoryItem?.forks_count ?? 0)
+        issuesLabel.text = String(repositoryItem?.open_issues_count ?? 0)
+        
+        licenseLabel.text = repositoryItem?.license?.name
+        
+        if let url = URL(string: repositoryItem?.owner.avatar_url ?? "") {
+            Nuke.loadImage(with: url, into: imageView)
+        }
+    }
+    
+    @objc private func tappedSafariButton() {
+        
+        guard let repositoryUrl = URL(string: repositoryItem?.owner.html_url ?? "") else { return }
+        UIApplication.shared.open(repositoryUrl)
+    }
+    
+    @objc private func tappedBackButton() {
+        
+        dismiss(animated: true, completion: nil)
+    }
 }
-    }
+

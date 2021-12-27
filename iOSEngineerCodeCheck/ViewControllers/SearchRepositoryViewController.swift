@@ -15,8 +15,8 @@ class SearchRepositoryViewController: UIViewController {
     private var repositoryItems = [Item]()
     private var repositoryItem: Item?
     
-    @IBOutlet weak var searchBar: UISearchBar!
-    @IBOutlet weak var searchResultTableView: UITableView!
+    @IBOutlet private weak var searchBar: UISearchBar!
+    @IBOutlet private weak var searchResultTableView: UITableView!
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -30,19 +30,18 @@ class SearchRepositoryViewController: UIViewController {
         searchResultTableView.dataSource = self
         searchResultTableView.register(UINib(nibName: "SearchResultTableViewCell", bundle: nil), forCellReuseIdentifier: cellId)
         
-        searchBar.text = "GitHubのリポジトリを検索できます"
+        searchBar.text = "リポジトリの検索"
         searchBar.delegate = self
     }
     
+    // API処理メソッド
     private func fetchSearchRepositoryInfo(word: String) {
         
         let path = "/search/repositories"
         
-        API.shared.request(word: word, path: path, type: Repository.self) { (repository) in
-            print("repository",repository )
-            self.repositoryItems = repository.items
-            print("repositoryItems", self.repositoryItems)
-            self.searchResultTableView.reloadData()
+        API.shared.request(word: word, path: path, type: Repository.self) { [unowned self] (repository) in
+            repositoryItems = repository.items
+            searchResultTableView.reloadData()
         }
     }
 }
@@ -51,12 +50,13 @@ class SearchRepositoryViewController: UIViewController {
 extension SearchRepositoryViewController: UITableViewDelegate, UITableViewDataSource {
     
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
-        return 60
+        
+        return 130
     }
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return repositoryItems.count
         
+        return repositoryItems.count
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
@@ -68,12 +68,13 @@ extension SearchRepositoryViewController: UITableViewDelegate, UITableViewDataSo
     }
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        //  画面遷移時に呼ばれる
+        
         let detailRepositoryStoryboard = UIStoryboard(name: "DetailRepository", bundle: nil)
         let detailRepositoryViewController = detailRepositoryStoryboard.instantiateViewController(withIdentifier: "DetailRepositoryViewController") as! DetailRepositoryViewController
-//        let item = repositoryItems[indexPath.row]
-//        detailRepositoryViewController.repositoryItems = item
-        self.present(detailRepositoryViewController, animated: true, completion: nil)
+        repositoryItem = repositoryItems[indexPath.row]
+        detailRepositoryViewController.repositoryItem = repositoryItem
+        detailRepositoryViewController.modalPresentationStyle = .fullScreen
+        present(detailRepositoryViewController, animated: true, completion: nil)
     }
 }
 
@@ -81,7 +82,7 @@ extension SearchRepositoryViewController: UITableViewDelegate, UITableViewDataSo
 extension SearchRepositoryViewController: UISearchBarDelegate {
     
     func searchBarShouldBeginEditing(_ searchBar: UISearchBar) -> Bool {
-        // seachBarのtextを空にする
+//         seachBarのtextを空にする
         searchBar.text = ""
         return true
     }
@@ -98,6 +99,5 @@ extension SearchRepositoryViewController: UISearchBarDelegate {
         guard let word = searchBar.text else { return }
         
         fetchSearchRepositoryInfo(word: word)
-        
     }
 }

@@ -56,23 +56,23 @@ class DetailRepositoryViewController: UIViewController {
     private func setupRepositoryItem() {
         
         descriptionTextView.text = repositoryItem?.description
-        titleLabel.text = repositoryItem?.full_name
+        titleLabel.text = repositoryItem?.fullName
         languageLabel.text = "written in \(repositoryItem?.language ?? "")"
-        starsLabel.text = String(repositoryItem?.stargazers_count ?? 0)
-        watchesLabel.text = String(repositoryItem?.watchers_count ?? 0)
-        forksLabel.text = String(repositoryItem?.forks_count ?? 0)
-        issuesLabel.text = String(repositoryItem?.open_issues_count ?? 0)
+        starsLabel.text = String(repositoryItem?.stargazersCount ?? 0)
+        watchesLabel.text = String(repositoryItem?.watchersCount ?? 0)
+        forksLabel.text = String(repositoryItem?.forksCount ?? 0)
+        issuesLabel.text = String(repositoryItem?.openIssuesCount ?? 0)
         
         licenseLabel.text = repositoryItem?.license?.name
         
-        if let url = URL(string: repositoryItem?.owner.avatar_url ?? "") {
+        if let url = URL(string: repositoryItem?.owner.avatarUrl ?? "") {
             Nuke.loadImage(with: url, into: imageView)
         }
     }
     
     @objc private func tappedSafariButton() {
         
-        guard let repositoryUrl = URL(string: repositoryItem?.owner.html_url ?? "") else { return }
+        guard let repositoryUrl = URL(string: repositoryItem?.owner.htmlUrl ?? "") else { return }
         UIApplication.shared.open(repositoryUrl)
     }
     

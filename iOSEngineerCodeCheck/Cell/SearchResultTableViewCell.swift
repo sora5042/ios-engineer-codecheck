@@ -13,7 +13,7 @@ class SearchResultTableViewCell: UITableViewCell {
     var repositoryItem: Item? {
         didSet {
             
-            if let repositoryTitle = repositoryItem?.full_name {
+            if let repositoryTitle = repositoryItem?.fullName {
                 repositoryTitleLabel.text = repositoryTitle
             }
             

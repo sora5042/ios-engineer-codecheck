@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import RealmSwift
 
 class SearchRepositoryViewController: UIViewController {
     
@@ -14,6 +15,8 @@ class SearchRepositoryViewController: UIViewController {
     
     private var repositoryItems = [Item]()
     private var repositoryItem: Item?
+    
+    var favoriteModel: FavoriteModel?
     
     @IBOutlet private weak var searchBar: UISearchBar!
     @IBOutlet private weak var searchResultTableView: UITableView!
@@ -63,6 +66,10 @@ extension SearchRepositoryViewController: UITableViewDelegate, UITableViewDataSo
         
         let cell = searchResultTableView.dequeueReusableCell(withIdentifier: cellId, for: indexPath) as! SearchResultTableViewCell
         cell.repositoryItem = repositoryItems[indexPath.row]
+        cell.delegate = self
+        cell.index = indexPath
+
+        cell.favoriteButton.tintColor = favoriteModel?.isFavorite ?? false ? UIColor.blue : .lightGray
         
         return cell
     }
@@ -78,11 +85,21 @@ extension SearchRepositoryViewController: UITableViewDelegate, UITableViewDataSo
     }
 }
 
+// MARK: - SearchRepositoryViewController: ArticleCellDelegate
+extension SearchRepositoryViewController: ArticleCellDelegate {
+    
+    func reloadCell(index: IndexPath, favoriteModel: FavoriteModel) {
+        
+        self.favoriteModel = favoriteModel
+        searchResultTableView.reloadRows(at: [index], with: .fade)
+    }
+}
+
 // MARK: - SearchRepositoryViewController: UISearchBarDelegate
 extension SearchRepositoryViewController: UISearchBarDelegate {
     
     func searchBarShouldBeginEditing(_ searchBar: UISearchBar) -> Bool {
-//         seachBarのtextを空にする
+        // seachBarのtextを空にする
         searchBar.text = ""
         return true
     }

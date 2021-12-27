@@ -15,7 +15,7 @@ struct Repository: Decodable {
 
 struct Item: Decodable {
     
-    let id: Int
+    let id: Int?
     let name: String
     let fullName: String
     let stargazersCount: Int
@@ -31,6 +31,7 @@ struct Item: Decodable {
 struct Owner: Decodable {
     
     let avatarUrl: String
+    let login: String
     let url: String
     let htmlUrl: String
 }
@@ -39,3 +40,4 @@ struct License: Decodable {
     
     let name: String
 }
+

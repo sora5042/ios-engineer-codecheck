@@ -28,6 +28,7 @@ class API {
                 
                 let decode = JSONDecoder()
                 decode.keyDecodingStrategy = .convertFromSnakeCase
+                
                 if let data = response.data {
                     let value = try decode.decode(T.self, from: data)
                     

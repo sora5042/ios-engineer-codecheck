@@ -12,7 +12,8 @@ import Nuke
 class DetailRepositoryViewController: UIViewController {
     
     var repositoryItem: Item?
-       
+    
+    // Label
     @IBOutlet private weak var titleLabel: UILabel!
     @IBOutlet private weak var languageLabel: UILabel!
     @IBOutlet private weak var starsLabel: UILabel!
@@ -24,9 +25,11 @@ class DetailRepositoryViewController: UIViewController {
     @IBOutlet private weak var descriptionTextView: UITextView!
     @IBOutlet private weak var imageView: UIImageView!
     
+    // Button
     @IBOutlet private weak var backButton: UIButton!
     @IBOutlet private weak var safariButton: UIButton!
     
+    // UIView
     @IBOutlet private weak var titleView: UIView!
     @IBOutlet private weak var countView: UIView!
     @IBOutlet private weak var licenseView: UIView!
@@ -66,6 +69,7 @@ class DetailRepositoryViewController: UIViewController {
         licenseLabel.text = repositoryItem?.license?.name
         
         if let url = URL(string: repositoryItem?.owner.avatarUrl ?? "") {
+            
             Nuke.loadImage(with: url, into: imageView)
         }
     }

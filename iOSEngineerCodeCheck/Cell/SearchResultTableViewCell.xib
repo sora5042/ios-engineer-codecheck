@@ -50,6 +50,11 @@
                         <color key="textColor" white="0.33333333333333331" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <nil key="highlightedColor"/>
                     </label>
+                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="yz2-7p-emT">
+                        <rect key="frame" x="337" y="13" width="22" height="22"/>
+                        <inset key="imageEdgeInsets" minX="0.0" minY="0.0" maxX="2.2250738585072014e-308" maxY="0.0"/>
+                        <state key="normal" image="star" catalog="system"/>
+                    </button>
                 </subviews>
                 <constraints>
                     <constraint firstItem="obg-Xr-cQq" firstAttribute="leading" secondItem="Cho-5k-mcU" secondAttribute="trailing" constant="8" id="0nE-sA-iNz"/>
@@ -57,10 +62,12 @@
                     <constraint firstItem="319-TO-Bcp" firstAttribute="top" secondItem="8Bs-N8-nDF" secondAttribute="bottom" constant="6" id="ETp-5r-ljX"/>
                     <constraint firstItem="8Bs-N8-nDF" firstAttribute="top" secondItem="Cho-5k-mcU" secondAttribute="bottom" constant="3" id="LeO-UY-nCL"/>
                     <constraint firstItem="Zgf-kH-miT" firstAttribute="bottom" secondItem="H2p-sc-9uM" secondAttribute="bottomMargin" id="NDo-WK-LpJ"/>
+                    <constraint firstAttribute="trailing" secondItem="yz2-7p-emT" secondAttribute="trailing" constant="16" id="QfK-ft-SkX"/>
                     <constraint firstItem="Cho-5k-mcU" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" constant="5" id="Rhf-tN-WiH"/>
                     <constraint firstItem="Zgf-kH-miT" firstAttribute="trailing" secondItem="H2p-sc-9uM" secondAttribute="trailingMargin" id="b08-OK-7NU"/>
                     <constraint firstItem="Cho-5k-mcU" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="top" constant="5" id="fgS-O7-o5s"/>
                     <constraint firstItem="8Bs-N8-nDF" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" constant="16" id="fgl-9l-C7a"/>
+                    <constraint firstItem="yz2-7p-emT" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="top" constant="13" id="jIH-Td-Hjm"/>
                     <constraint firstItem="Zgf-kH-miT" firstAttribute="leading" secondItem="319-TO-Bcp" secondAttribute="trailing" constant="53" id="oSk-1c-UrF"/>
                     <constraint firstItem="obg-Xr-cQq" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="top" constant="16" id="oxa-Hw-xbW"/>
                     <constraint firstItem="319-TO-Bcp" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" constant="10" id="y5u-wV-Txi"/>
@@ -69,6 +76,7 @@
             <viewLayoutGuide key="safeArea" id="njF-e1-oar"/>
             <connections>
                 <outlet property="descriptionTextView" destination="319-TO-Bcp" id="ssa-ri-4zF"/>
+                <outlet property="favoriteButton" destination="yz2-7p-emT" id="qkk-hV-PoO"/>
                 <outlet property="languageLabel" destination="Zgf-kH-miT" id="OU1-s9-IZR"/>
                 <outlet property="loginNameLabel" destination="obg-Xr-cQq" id="uN1-Aq-Wrh"/>
                 <outlet property="repositoryImageView" destination="Cho-5k-mcU" id="ALN-Rv-bER"/>
@@ -78,6 +86,7 @@
         </tableViewCell>
     </objects>
     <resources>
+        <image name="star" catalog="system" width="128" height="116"/>
         <systemColor name="labelColor">
             <color white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
         </systemColor>

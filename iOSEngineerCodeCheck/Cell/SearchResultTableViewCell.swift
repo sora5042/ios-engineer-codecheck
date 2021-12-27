@@ -38,11 +38,12 @@ class SearchResultTableViewCell: UITableViewCell {
         }
     }
     
-    @IBOutlet weak var repositoryTitleLabel: UILabel!
-    @IBOutlet weak var languageLabel: UILabel!
-    @IBOutlet weak var repositoryImageView: UIImageView!
-    @IBOutlet weak var descriptionTextView: UITextView!
-    @IBOutlet weak var loginNameLabel: UILabel!
+    @IBOutlet private weak var repositoryTitleLabel: UILabel!
+    @IBOutlet private weak var languageLabel: UILabel!
+    @IBOutlet private weak var repositoryImageView: UIImageView!
+    @IBOutlet private weak var descriptionTextView: UITextView!
+    @IBOutlet private weak var loginNameLabel: UILabel!
+    @IBOutlet weak var favoriteButton: UIButton!
     
     
     override func awakeFromNib() {
@@ -54,6 +55,13 @@ class SearchResultTableViewCell: UITableViewCell {
     private func setupViews() {
         
         repositoryImageView.layer.cornerRadius = 22.5
+        favoriteButton.addTarget(self, action: #selector(tappedFavoriteButton), for: .touchUpInside)
+    }
+    
+    @objc private func tappedFavoriteButton() {
+        
+        
+        
     }
 
     override func setSelected(_ selected: Bool, animated: Bool) {

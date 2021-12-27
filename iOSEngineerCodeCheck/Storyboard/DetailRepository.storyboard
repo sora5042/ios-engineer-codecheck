@@ -53,7 +53,7 @@
                                             <constraint firstAttribute="width" secondItem="iCs-uw-uaQ" secondAttribute="height" multiplier="1:1" id="l9n-dP-8F0"/>
                                         </constraints>
                                     </imageView>
-                                    <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" editable="NO" text="description" textAlignment="natural" adjustsFontForContentSizeCategory="YES" selectable="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Lf9-01-J4q">
+                                    <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" editable="NO" text="description" textAlignment="natural" selectable="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Lf9-01-J4q">
                                         <rect key="frame" x="8" y="98.333333333333343" width="359" height="89.666666666666657"/>
                                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                                         <color key="textColor" systemColor="labelColor"/>

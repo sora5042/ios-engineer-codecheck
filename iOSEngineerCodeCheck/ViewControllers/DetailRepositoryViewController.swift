@@ -85,4 +85,3 @@ class DetailRepositoryViewController: UIViewController {
         dismiss(animated: true, completion: nil)
     }
 }
-

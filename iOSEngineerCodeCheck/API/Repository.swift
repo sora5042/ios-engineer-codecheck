@@ -40,4 +40,3 @@ struct License: Decodable {
     
     let name: String?
 }
-

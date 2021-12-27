@@ -18,5 +18,3 @@ class FavoriteModel: Object {
         return "id"
     }
 }
-
-

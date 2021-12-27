@@ -89,7 +89,7 @@ class SearchResultTableViewCell: UITableViewCell {
         }
         
         fetchFavoriteInfo()
-        print("favoriteModels", favoriteModels)
+//        print("favoriteModels", favoriteModels)
         delegate?.reloadCell(index: index!, favoriteModel: favoriteModels!)
     }
     

@@ -38,6 +38,6 @@ struct Owner: Decodable {
 
 struct License: Decodable {
     
-    let name: String
+    let name: String?
 }
 

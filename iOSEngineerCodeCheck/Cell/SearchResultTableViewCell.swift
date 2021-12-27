@@ -7,10 +7,14 @@
 //
 
 import UIKit
+import RealmSwift
 import Nuke
 
 class SearchResultTableViewCell: UITableViewCell {
     
+    var favoriteModel = FavoriteModel()
+    var favoriteModelArray = [FavoriteModel]()
+
     var repositoryItem: Item? {
         didSet {
             
@@ -34,7 +38,6 @@ class SearchResultTableViewCell: UITableViewCell {
             if let url = URL(string: repositoryItem?.owner.avatar_url ?? "") {
                 Nuke.loadImage(with: url, into: repositoryImageView )
             }
-            
         }
     }
     
@@ -58,15 +61,97 @@ class SearchResultTableViewCell: UITableViewCell {
         favoriteButton.addTarget(self, action: #selector(tappedFavoriteButton), for: .touchUpInside)
     }
     
+    private func fetchFavoriteInfo() {
+        
+        let realm = try! Realm()
+        
+        let result = realm.objects(FavoriteModel.self)
+        
+        for favorite in result {
+            
+            favoriteModelArray.append(favorite)
+        }
+    }
+    
     @objc private func tappedFavoriteButton() {
         
+        if favoriteModel == nil {
+            
+            createFavoriteData()
+            
+        } else {
+            
+            updateFavoritedata()
+            
+        }
         
-        
+        fetchFavoriteInfo()
+        print("favoriteModelArray", favoriteModelArray)
     }
-
+    
+    private func createFavoriteData() {
+        
+        let id = UUID().uuidString
+        
+        do {
+            
+            let realm = try Realm()
+            
+            favoriteModel.id = id
+            favoriteModel.isFavorite = true
+            
+            try realm.write {
+                realm.add(favoriteModel)
+            }
+            
+        } catch  {
+            print("Favorite情報の保存に失敗しました")
+        }
+    }
+    
+    private func updateFavoritedata() {
+        
+        let id = favoriteModel.id
+        
+        if favoriteModel.isFavorite == true {
+            
+            do {
+                
+                let realm = try Realm()
+                
+                favoriteModel.id = id
+                favoriteModel.isFavorite = false
+                
+                try realm.write {
+                    realm.add(favoriteModel, update: .modified)
+                }
+                
+            } catch  {
+                print("Favorite情報の更新に失敗しました")
+            }
+            
+        } else {
+            
+            do {
+                
+                let realm = try Realm()
+                
+                favoriteModel.id = id
+                favoriteModel.isFavorite = true
+                
+                try realm.write {
+                    realm.add(favoriteModel, update: .modified)
+                }
+                
+            } catch  {
+                print("Favorite情報の更新に失敗しました")
+            }
+        }
+    }
+    
     override func setSelected(_ selected: Bool, animated: Bool) {
         super.setSelected(selected, animated: animated)
-
+        
         // Configure the view for the selected state
     }
 }

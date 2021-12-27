@@ -10,11 +10,17 @@ import UIKit
 import RealmSwift
 import Nuke
 
+protocol ArticleCellDelegate: class {
+    func reloadCell(index: IndexPath, favoriteModel: FavoriteModel)
+}
+
 class SearchResultTableViewCell: UITableViewCell {
     
+    weak var delegate: ArticleCellDelegate?
+    var index: IndexPath!
+    
     var favoriteModel = FavoriteModel()
-    var favoriteModelArray = [FavoriteModel]()
-
+    var favoriteModels: FavoriteModel?
     var repositoryItem: Item? {
         didSet {
             
@@ -32,7 +38,6 @@ class SearchResultTableViewCell: UITableViewCell {
             
             if let description = repositoryItem?.description {
                 descriptionTextView.text = description
-                
             }
             
             if let url = URL(string: repositoryItem?.owner.avatar_url ?? "") {
@@ -47,7 +52,6 @@ class SearchResultTableViewCell: UITableViewCell {
     @IBOutlet private weak var descriptionTextView: UITextView!
     @IBOutlet private weak var loginNameLabel: UILabel!
     @IBOutlet weak var favoriteButton: UIButton!
-    
     
     override func awakeFromNib() {
         super.awakeFromNib()
@@ -64,29 +68,28 @@ class SearchResultTableViewCell: UITableViewCell {
     private func fetchFavoriteInfo() {
         
         let realm = try! Realm()
-        
         let result = realm.objects(FavoriteModel.self)
         
         for favorite in result {
             
-            favoriteModelArray.append(favorite)
+            favoriteModels = favorite
         }
     }
-    
+    // お気に入りボタンタップ時の処理
     @objc private func tappedFavoriteButton() {
         
-        if favoriteModel == nil {
+        if favoriteModels == nil {
             
             createFavoriteData()
             
         } else {
             
             updateFavoritedata()
-            
         }
         
         fetchFavoriteInfo()
-        print("favoriteModelArray", favoriteModelArray)
+        print("favoriteModels", favoriteModels)
+        delegate?.reloadCell(index: index, favoriteModel: favoriteModels!)
     }
     
     private func createFavoriteData() {
@@ -111,7 +114,7 @@ class SearchResultTableViewCell: UITableViewCell {
     
     private func updateFavoritedata() {
         
-        let id = favoriteModel.id
+        guard let id = favoriteModels?.id else { return }
         
         if favoriteModel.isFavorite == true {
             

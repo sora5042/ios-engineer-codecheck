@@ -71,8 +71,6 @@ class DetailRepositoryViewController: UIViewController {
         
         guard let repositoryUrl = URL(string: repositoryItem?.owner.html_url ?? "") else { return }
         UIApplication.shared.open(repositoryUrl)
-        
-        
     }
     
     @objc private func tappedBackButton() {

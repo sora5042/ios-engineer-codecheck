@@ -24,12 +24,13 @@ class SearchResultTableViewCell: UITableViewCell {
     var repositoryItem: Item? {
         didSet {
             
-            if let loginName = repositoryItem?.owner.login {
-                loginNameLabel.text = loginName
+            if let repositoryTitle = repositoryItem?.fullName {
+                
+                repositoryTitleLabel.text = repositoryTitle
             }
             
-            if let repositoryTitle = repositoryItem?.full_name {
-                repositoryTitleLabel.text = repositoryTitle
+            if let loginName = repositoryItem?.owner.login {
+                loginNameLabel.text = loginName
             }
             
             if let language = repositoryItem?.language {
@@ -40,7 +41,7 @@ class SearchResultTableViewCell: UITableViewCell {
                 descriptionTextView.text = description
             }
             
-            if let url = URL(string: repositoryItem?.owner.avatar_url ?? "") {
+            if let url = URL(string: repositoryItem?.owner.avatarUrl ?? "") {
                 Nuke.loadImage(with: url, into: repositoryImageView )
             }
         }

@@ -42,9 +42,9 @@ class SearchRepositoryViewController: UIViewController {
         
         let path = "/search/repositories"
         
-        API.shared.request(word: word, path: path, type: Repository.self) { (repository) in
-            self.repositoryItems = repository.items
-            self.searchResultTableView.reloadData()
+        API.shared.request(word: word, path: path, type: Repository.self) { [unowned self] (repository) in
+            repositoryItems = repository.items
+            searchResultTableView.reloadData()
         }
     }
 }
@@ -79,9 +79,9 @@ extension SearchRepositoryViewController: UITableViewDelegate, UITableViewDataSo
         let detailRepositoryStoryboard = UIStoryboard(name: "DetailRepository", bundle: nil)
         let detailRepositoryViewController = detailRepositoryStoryboard.instantiateViewController(withIdentifier: "DetailRepositoryViewController") as! DetailRepositoryViewController
         repositoryItem = repositoryItems[indexPath.row]
-        detailRepositoryViewController.repositoryItem = self.repositoryItem
+        detailRepositoryViewController.repositoryItem = repositoryItem
         detailRepositoryViewController.modalPresentationStyle = .fullScreen
-        self.present(detailRepositoryViewController, animated: true, completion: nil)
+        present(detailRepositoryViewController, animated: true, completion: nil)
     }
 }
 
@@ -99,7 +99,7 @@ extension SearchRepositoryViewController: ArticleCellDelegate {
 extension SearchRepositoryViewController: UISearchBarDelegate {
     
     func searchBarShouldBeginEditing(_ searchBar: UISearchBar) -> Bool {
-        //         seachBarのtextを空にする
+        // seachBarのtextを空にする
         searchBar.text = ""
         return true
     }

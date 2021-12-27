@@ -17,28 +17,27 @@ struct Item: Decodable {
     
     let id: Int?
     let name: String
-    let full_name: String
-    let stargazers_count: Int
-    let watchers_count: Int
+    let fullName: String
+    let stargazersCount: Int
+    let watchersCount: Int
     let language: String?
     let description: String?
-    let forks_count: Int
-    let open_issues_count: Int
+    let forksCount: Int
+    let openIssuesCount: Int
     let owner: Owner
     let license: License?
-    
 }
 
 struct Owner: Decodable {
     
+    let avatarUrl: String
     let login: String
-    let avatar_url: String
     let url: String
-    let html_url: String
+    let htmlUrl: String
 }
 
 struct License: Decodable {
     
     let name: String
-    
 }
+

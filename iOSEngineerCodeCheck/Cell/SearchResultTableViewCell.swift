@@ -61,6 +61,7 @@ class SearchResultTableViewCell: UITableViewCell {
     
     private func setupViews() {
         repositoryImageView.layer.cornerRadius = 22.5
+        descriptionTextView.backgroundColor = .white
         favoriteButton.addTarget(self, action: #selector(tappedFavoriteButton), for: .touchUpInside)
     }
     

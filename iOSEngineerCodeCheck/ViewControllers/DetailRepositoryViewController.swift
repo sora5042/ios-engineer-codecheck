@@ -50,6 +50,7 @@ class DetailRepositoryViewController: UIViewController {
         licenseView.layer.borderWidth = 1
         licenseView.layer.borderColor = UIColor.lightGray.cgColor
         safariButton.layer.cornerRadius = 12
+        descriptionTextView.backgroundColor = .white
         
         backButton.addTarget(self, action: #selector(tappedBackButton), for: .touchUpInside)
         safariButton.addTarget(self, action: #selector(tappedSafariButton), for: .touchUpInside)
@@ -77,5 +78,10 @@ class DetailRepositoryViewController: UIViewController {
     
     @objc private func tappedBackButton() {
         dismiss(animated: true, completion: nil)
+    }
+    
+    // ステータスバーの色指定
+    override var preferredStatusBarStyle: UIStatusBarStyle {
+        return .darkContent
     }
 }

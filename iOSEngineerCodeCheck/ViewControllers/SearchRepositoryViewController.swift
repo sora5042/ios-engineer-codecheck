@@ -43,6 +43,11 @@ class SearchRepositoryViewController: UIViewController {
             self?.searchResultTableView.reloadData()
         }
     }
+    
+    // ステータスバーの色指定
+    override var preferredStatusBarStyle: UIStatusBarStyle {
+        return .darkContent
+    }
 }
 
 // MARK: - SearchRepositoryViewController: UITableViewDelegate, UITableViewDataSource

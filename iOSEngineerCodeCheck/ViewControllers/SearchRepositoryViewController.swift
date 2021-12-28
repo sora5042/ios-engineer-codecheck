@@ -42,9 +42,9 @@ class SearchRepositoryViewController: UIViewController {
         
         let path = "/search/repositories"
         
-        API.shared.request(word: word, path: path, type: Repository.self) { [unowned self] (repository) in
-            repositoryItems = repository.items
-            searchResultTableView.reloadData()
+        API.shared.request(word: word, path: path, type: Repository.self) { [weak self] (repository) in
+            self?.repositoryItems = repository.items
+            self?.searchResultTableView.reloadData()
         }
     }
 }

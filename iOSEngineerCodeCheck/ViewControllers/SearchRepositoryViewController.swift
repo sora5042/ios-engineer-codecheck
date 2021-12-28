@@ -64,24 +64,31 @@ extension SearchRepositoryViewController: UITableViewDelegate, UITableViewDataSo
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         
-        let cell = searchResultTableView.dequeueReusableCell(withIdentifier: cellId, for: indexPath) as! SearchResultTableViewCell
-        cell.repositoryItem = repositoryItems[indexPath.row]
-        cell.delegate = self
-        cell.index = indexPath
-
-        cell.favoriteButton.tintColor = favoriteModel?.isFavorite ?? false ? UIColor.blue : .lightGray
-        
-        return cell
+        if let cell = searchResultTableView.dequeueReusableCell(withIdentifier: cellId, for: indexPath) as? SearchResultTableViewCell {
+            
+            cell.repositoryItem = repositoryItems[indexPath.row]
+            cell.delegate = self
+            cell.index = indexPath
+            cell.favoriteButton.tintColor = favoriteModel?.isFavorite ?? false ? UIColor.blue : .lightGray
+            
+            return cell
+            
+        } else {
+           
+            return UITableViewCell()
+        }
     }
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         
         let detailRepositoryStoryboard = UIStoryboard(name: "DetailRepository", bundle: nil)
-        let detailRepositoryViewController = detailRepositoryStoryboard.instantiateViewController(withIdentifier: "DetailRepositoryViewController") as! DetailRepositoryViewController
-        repositoryItem = repositoryItems[indexPath.row]
-        detailRepositoryViewController.repositoryItem = repositoryItem
-        detailRepositoryViewController.modalPresentationStyle = .fullScreen
-        present(detailRepositoryViewController, animated: true, completion: nil)
+        if let detailRepositoryViewController = detailRepositoryStoryboard.instantiateViewController(withIdentifier: "DetailRepositoryViewController") as? DetailRepositoryViewController {
+            
+            repositoryItem = repositoryItems[indexPath.row]
+            detailRepositoryViewController.repositoryItem = repositoryItem
+            detailRepositoryViewController.modalPresentationStyle = .fullScreen
+            present(detailRepositoryViewController, animated: true, completion: nil)
+        }
     }
 }
 

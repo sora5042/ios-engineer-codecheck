@@ -17,7 +17,7 @@ protocol ArticleCellDelegate: class {
 class SearchResultTableViewCell: UITableViewCell {
     
     weak var delegate: ArticleCellDelegate?
-    var index: IndexPath?
+    var index: IndexPath = []
     
     var favoriteModel = FavoriteModel()
     var favoriteModels: FavoriteModel?
@@ -89,8 +89,7 @@ class SearchResultTableViewCell: UITableViewCell {
         }
         
         fetchFavoriteInfo()
-//        print("favoriteModels", favoriteModels)
-        delegate?.reloadCell(index: index!, favoriteModel: favoriteModels!)
+        delegate?.reloadCell(index: index, favoriteModel: favoriteModel)
     }
     
     private func createFavoriteData() {
@@ -109,7 +108,7 @@ class SearchResultTableViewCell: UITableViewCell {
             }
             
         } catch {
-            print("Favorite情報の保存に失敗しました")
+            print(error, "Favorite情報の保存に失敗しました")
         }
     }
     
@@ -131,7 +130,7 @@ class SearchResultTableViewCell: UITableViewCell {
                 }
                 
             } catch {
-                print("Favorite情報の更新に失敗しました")
+                print(error, "Favorite情報の更新に失敗しました")
             }
             
         } else {
@@ -148,7 +147,7 @@ class SearchResultTableViewCell: UITableViewCell {
                 }
                 
             } catch {
-                print("Favorite情報の更新に失敗しました")
+                print(error, "Favorite情報の更新に失敗しました")
             }
         }
     }

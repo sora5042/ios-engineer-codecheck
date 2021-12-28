@@ -1,15 +1,15 @@
 PODS:
-  - Mockingjay (2.0.1):
-    - Mockingjay/Core (= 2.0.1)
-    - Mockingjay/XCTest (= 2.0.1)
-  - Mockingjay/Core (2.0.1):
-    - URITemplate (~> 2.0)
-  - Mockingjay/XCTest (2.0.1):
+  - Mockingjay (3.0.0-alpha.1):
+    - Mockingjay/Core (= 3.0.0-alpha.1)
+    - Mockingjay/XCTest (= 3.0.0-alpha.1)
+  - Mockingjay/Core (3.0.0-alpha.1):
+    - URITemplate (~> 3.0)
+  - Mockingjay/XCTest (3.0.0-alpha.1):
     - Mockingjay/Core
-  - URITemplate (2.0.3)
+  - URITemplate (3.0.1)
 
 DEPENDENCIES:
-  - Mockingjay
+  - Mockingjay (= 3.0.0-alpha.1)
 
 SPEC REPOS:
   trunk:
@@ -17,9 +17,9 @@ SPEC REPOS:
     - URITemplate
 
 SPEC CHECKSUMS:
-  Mockingjay: 11a621880d2887f1775bdcf824341eb68f218450
-  URITemplate: ace0c4c46dcf8afe6e89b4060621852886b15c3b
+  Mockingjay: 0f7c5aa49c7f1b95621cee3c79b557141f5a225c
+  URITemplate: 5f5a79f3e384884102c4e6b3325d159c20a8035a
 
-PODFILE CHECKSUM: 2b2b75428fe85ba6b86966376611bb3c0e7e51e3
+PODFILE CHECKSUM: 1e09de511e91f331cceba84efe81e72d4c946a9a
 
 COCOAPODS: 1.11.2

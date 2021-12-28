@@ -6,17 +6,16 @@ target 'iOSEngineerCodeCheck' do
   use_frameworks!
 
   # Pods for iOSEngineerCodeCheck
-pod 'Mockingjay'
 
   target 'iOSEngineerCodeCheckTests' do
     inherit! :search_paths
     # Pods for testing
-pod 'Mockingjay'
+    pod 'Mockingjay', '3.0.0-alpha.1'
   end
 
   target 'iOSEngineerCodeCheckUITests' do
     # Pods for testing
-pod 'Mockingjay'
+    pod 'Mockingjay', '3.0.0-alpha.1'
   end
 
 end

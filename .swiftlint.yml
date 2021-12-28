@@ -6,6 +6,7 @@ disabled_rules:
 - explicit_type_interface
 - explicit_acl
 - explicit_top_level_acl
+- identifier_name
 - file_header
 - file_name
 - file_types_order

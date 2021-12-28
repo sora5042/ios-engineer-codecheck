@@ -42,4 +42,57 @@ Issues を確認した上、本プロジェクトを [**Duplicate** してくだ
 
 ## 参考記事
 
-提出された課題の評価ポイントに関しては、[こちらの記事](https://qiita.com/lovee/items/d76c68341ec3e7beb611)に詳しく書かれてありますので、ぜひご覧ください。
+提出された課題の評価ポイントに関しては、[こちらの記事](https://qiita.com/lovee/items/d76c68341ec3e7beb611)に詳しく書かれてありますので、ぜひご覧ください。  
+  
+  
+## 追加した機能  
+  
+- お気に入り機能(実装途中)  
+- リポジトリをSafariかアプリで開く  
+  
+  
+## UI変更点  
+  
+- 画面タイトルの変更  
+- セル、詳細画面を下記画像のように変更  
+  
+  
+## スクリーンショット  
+  
+<img src="https://user-images.githubusercontent.com/65600700/147543988-2e67b701-4cd8-438a-8bb9-3fd84f5c6dae.PNG" width="250px">  <img src="https://user-images.githubusercontent.com/65600700/147544171-8a6d2cc0-366d-44dc-8970-891fa0f391d2.PNG" width="250px"> <img src="https://user-images.githubusercontent.com/65600700/147544221-67ed9ae3-ddde-452f-bdc5-041b1f23c47b.PNG" width="250px">  
+  
+## 利用ライブラリ(SPMとPodとHomebrew)  
+### - Swift Package Manager  
+
+- [Alamofire](https://github.com/Alamofire/Alamofire)  
+- [Nuke](https://github.com/kean/Nuke)  
+- [RealmSwift](https://github.com/realm/realm-swift)  
+  
+### - Cocoa Pods  
+  
+- [Mockingjay](https://github.com/kylef/Mockingjay)  
+  
+### - Homebrew  
+  
+- [SwiftLint](https://github.com/realm/SwiftLint)  
+  
+## 今後の課題  
+  
+- お気に入り機能  
+- テスト  
+    テストについては現在勉強中
+    
+- issueのプログラム構造をリファクタリング    
+    SOLID原則などについては現在勉強中  
+  
+- issueのアーキテクチャの適用  
+  MVC,MVP,MVVMなどのアーキテクチャについては現在勉強中  
+    
+## 参考  
+  
+- [GitHub API ドキュメント](https://docs.github.com/ja/rest/reference/search#search-repositories)  
+- [GitHubのネイティブアプリ](https://apps.apple.com/jp/app/github/id1477376905)  
+  
+## 今回のコードチェック課題を終えて  
+  
+基礎の部分の重要性を改めて実感しました。保守性や設計などについてはこれからの課題として重点的に勉強していこうと思います。 

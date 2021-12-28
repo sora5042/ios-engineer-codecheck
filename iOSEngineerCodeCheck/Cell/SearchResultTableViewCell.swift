@@ -79,7 +79,7 @@ class SearchResultTableViewCell: UITableViewCell {
         } else {
             updateFavoritedata()
         }
-
+        
         fetchFavoriteInfo()
         delegate?.reloadCell(index: index, favoriteModel: favoriteModel)
     }
@@ -105,7 +105,6 @@ class SearchResultTableViewCell: UITableViewCell {
         if favoriteModel.isFavorite == true {
 
             do {
-
                 let realm = try Realm()
                 favoriteModel.id = id
                 favoriteModel.isFavorite = false

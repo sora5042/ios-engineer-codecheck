@@ -108,7 +108,7 @@ class SearchResultTableViewCell: UITableViewCell {
             }
             
         } catch {
-            print("Favorite情報の保存に失敗しました")
+            print(error, "Favorite情報の保存に失敗しました")
         }
     }
     
@@ -130,7 +130,7 @@ class SearchResultTableViewCell: UITableViewCell {
                 }
                 
             } catch {
-                print("Favorite情報の更新に失敗しました")
+                print(error, "Favorite情報の更新に失敗しました")
             }
             
         } else {
@@ -147,7 +147,7 @@ class SearchResultTableViewCell: UITableViewCell {
                 }
                 
             } catch {
-                print("Favorite情報の更新に失敗しました")
+                print(error, "Favorite情報の更新に失敗しました")
             }
         }
     }

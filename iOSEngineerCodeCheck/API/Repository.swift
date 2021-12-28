@@ -9,12 +9,12 @@
 import Foundation
 
 struct Repository: Decodable {
-
+    
     let items: [Item]
 }
 
 struct Item: Decodable {
-
+    
     let id: Int?
     let name: String
     let fullName: String
@@ -29,7 +29,7 @@ struct Item: Decodable {
 }
 
 struct Owner: Decodable {
-
+    
     let avatarUrl: String
     let login: String
     let url: String
@@ -37,6 +37,6 @@ struct Owner: Decodable {
 }
 
 struct License: Decodable {
-
+    
     let name: String?
 }

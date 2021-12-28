@@ -7,6 +7,7 @@
 //
 
 import XCTest
+import Mockingjay
 @testable import iOSEngineerCodeCheck
 
 class iOSEngineerCodeCheckTests: XCTestCase {
@@ -29,6 +30,10 @@ class iOSEngineerCodeCheckTests: XCTestCase {
         self.measure {
             // Put the code you want to measure the time of here.
         }
+    }
+    
+    func test_SearchRepositoriesResponse() {
+        
     }
 
 }

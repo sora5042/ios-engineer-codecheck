@@ -65,16 +65,25 @@ Issues を確認した上、本プロジェクトを [**Duplicate** してくだ
 ### - Swift Package Manager  
 
 - [Alamofire](https://github.com/Alamofire/Alamofire)  
+    簡潔かつシンプルにAPI通信を実装できるため  
+  
+  
 - [Nuke](https://github.com/kean/Nuke)  
+    URLから画像をダウンロードするため  
+  
+  
 - [RealmSwift](https://github.com/realm/realm-swift)  
+    お気に入り機能を実装するため  
   
 ### - Cocoa Pods  
   
 - [Mockingjay](https://github.com/kylef/Mockingjay)  
+    HTTP/HTTPS通信をスタブに置き換えてくれるSwiftのテスティングライブラリ  
   
 ### - Homebrew  
   
 - [SwiftLint](https://github.com/realm/SwiftLint)  
+    ソースコードの品質管理のため  
   
 ## 今後の課題  
   

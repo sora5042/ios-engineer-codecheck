@@ -17,7 +17,7 @@ protocol ArticleCellDelegate: class {
 class SearchResultTableViewCell: UITableViewCell {
     
     weak var delegate: ArticleCellDelegate?
-    var index: IndexPath?
+    var index: IndexPath = []
     
     var favoriteModel = FavoriteModel()
     var favoriteModels: FavoriteModel?
@@ -89,8 +89,7 @@ class SearchResultTableViewCell: UITableViewCell {
         }
         
         fetchFavoriteInfo()
-//        print("favoriteModels", favoriteModels)
-        delegate?.reloadCell(index: index!, favoriteModel: favoriteModels!)
+        delegate?.reloadCell(index: index, favoriteModel: favoriteModel)
     }
     
     private func createFavoriteData() {

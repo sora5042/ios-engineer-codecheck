@@ -10,7 +10,7 @@ import UIKit
 import RealmSwift
 import Nuke
 
-protocol ArticleCellDelegate: class {
+protocol ArticleCellDelegate: AnyObject {
     func reloadCell(index: IndexPath, favoriteModel: FavoriteModel)
 }
 

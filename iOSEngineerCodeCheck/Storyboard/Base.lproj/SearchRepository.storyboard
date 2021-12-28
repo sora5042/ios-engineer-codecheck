@@ -16,14 +16,14 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="-1" estimatedSectionHeaderHeight="-1" sectionFooterHeight="-1" estimatedSectionFooterHeight="-1" translatesAutoresizingMaskIntoConstraints="NO" id="gkC-V6-bzL">
-                                <rect key="frame" x="0.0" y="150" width="375" height="662"/>
+                                <rect key="frame" x="0.0" y="142" width="375" height="670"/>
                                 <color key="backgroundColor" red="0.96078431369999995" green="0.96078431369999995" blue="0.96078431369999995" alpha="1" colorSpace="calibratedRGB"/>
                             </tableView>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="8Ku-DQ-xCO">
-                                <rect key="frame" x="0.0" y="44" width="375" height="55"/>
+                                <rect key="frame" x="0.0" y="44" width="375" height="47"/>
                                 <subviews>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="リポジトリ一覧" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ue2-4P-YbG">
-                                        <rect key="frame" x="124" y="19" width="126" height="17"/>
+                                        <rect key="frame" x="0.0" y="15" width="375" height="17"/>
                                         <fontDescription key="fontDescription" name="HiraMaruProN-W4" family="Hiragino Maru Gothic ProN" pointSize="17"/>
                                         <nil key="textColor"/>
                                         <nil key="highlightedColor"/>
@@ -31,14 +31,14 @@
                                 </subviews>
                                 <color key="backgroundColor" red="0.96078431369999995" green="0.96078431369999995" blue="0.96078431369999995" alpha="1" colorSpace="calibratedRGB"/>
                                 <constraints>
-                                    <constraint firstItem="ue2-4P-YbG" firstAttribute="leading" secondItem="8Ku-DQ-xCO" secondAttribute="leading" constant="124" id="8MQ-Gg-KfD"/>
-                                    <constraint firstItem="ue2-4P-YbG" firstAttribute="top" secondItem="8Ku-DQ-xCO" secondAttribute="top" constant="19" id="Tuc-Uu-nOc"/>
-                                    <constraint firstAttribute="trailing" secondItem="ue2-4P-YbG" secondAttribute="trailing" constant="125" id="fco-Wb-ZDF"/>
-                                    <constraint firstAttribute="bottom" secondItem="ue2-4P-YbG" secondAttribute="bottom" constant="19" id="mIl-YW-WWC"/>
+                                    <constraint firstItem="ue2-4P-YbG" firstAttribute="top" secondItem="8Ku-DQ-xCO" secondAttribute="top" constant="15" id="Qeb-gn-4wF"/>
+                                    <constraint firstAttribute="bottom" secondItem="ue2-4P-YbG" secondAttribute="bottom" constant="15" id="ddW-z6-YXV"/>
+                                    <constraint firstItem="ue2-4P-YbG" firstAttribute="leading" secondItem="8Ku-DQ-xCO" secondAttribute="leading" id="hzE-mm-rEd"/>
+                                    <constraint firstAttribute="trailing" secondItem="ue2-4P-YbG" secondAttribute="trailing" id="kgN-3t-bkE"/>
                                 </constraints>
                             </view>
                             <searchBar contentMode="redraw" translatesAutoresizingMaskIntoConstraints="NO" id="XvT-mq-ChE">
-                                <rect key="frame" x="0.0" y="99" width="375" height="51"/>
+                                <rect key="frame" x="0.0" y="91" width="375" height="51"/>
                                 <textInputTraits key="textInputTraits"/>
                             </searchBar>
                         </subviews>
@@ -64,7 +64,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="gwH-xG-bvS" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="207.19999999999999" y="59.11330049261084"/>
+            <point key="canvasLocation" x="-17" y="50"/>
         </scene>
     </scenes>
 </document>
